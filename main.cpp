@@ -23,11 +23,23 @@ int main(int argc, char *argv[]) {
 		blockchain_file << ""; /// TODO: add genesis block
 		blockchain_file.close();
 		std::cout << "Made blockchain.dat file\n";
+		// make config.txt file
+		std::ofstream config_file(".pzcoin/config.txt");
+		config_file << "rpcport=32174\nrpcuser=pzcoinrpc\nrpcpassword=pzcoinrpcpassword\n";
+		config_file << "walletaddr=\n";
+		config_file.close();
+		std::cout << "Made config.txt file\n";
 		std::cout << "Done! Clearing screen in 3 seconds...\n";
 		sleep(3);
 		std::cout << "\033[2J\033[1;1H";
 	}
 	// connect to peers and sync blockchain
 	
-	// 
+	// start json-rpc server
+
+	// if ran with "pzcoin-cli mine", start mining
+	if (argc == 2 && std::string(argv[1]) == "mine") {
+		
+	}
+	return 0;
 }
